@@ -1,0 +1,271 @@
+.shell {
+  display: flex;
+  min-height: 100vh;
+  background: var(--canvas);
+}
+
+/* ---------- sidebar ---------- */
+
+.sidebar {
+  width: var(--sidebar-w);
+  flex: none;
+  background: var(--surface);
+  border-right: 1px solid var(--line);
+  padding: 18px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--blue-800);
+  letter-spacing: -0.02em;
+  padding: 4px 8px 0;
+}
+
+.brand-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: var(--grad-blue);
+  color: #fff;
+  font-size: 13px;
+}
+
+.sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: var(--r-md);
+  background: var(--canvas);
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--blue-600);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  flex: none;
+}
+
+.sidebar-user strong {
+  display: block;
+  font-size: 13px;
+}
+
+.sidebar-user span {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: var(--r-md);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.nav-link:hover {
+  background: var(--canvas);
+  color: var(--ink);
+}
+
+.nav-link.active {
+  background: var(--green-100);
+  color: #0d5c31;
+}
+
+.nav-ico {
+  width: 18px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.sidebar-foot {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+
+/* ---------- topbar ---------- */
+
+.main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  height: var(--topbar-h);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 26px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.topbar-tabs {
+  display: flex;
+  gap: 18px;
+  margin-left: 8px;
+}
+
+.topbar-tab {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--muted);
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+}
+
+.topbar-tab.active {
+  color: var(--blue-700);
+  border-bottom-color: var(--blue-600);
+}
+
+.search {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 280px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: var(--r-pill);
+  background: var(--canvas);
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.search input {
+  border: none;
+  background: none;
+  outline: none;
+  width: 100%;
+  font-size: 12.5px;
+}
+
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: var(--muted);
+}
+
+.icon-btn:hover {
+  background: var(--canvas);
+  color: var(--ink);
+}
+
+.page {
+  padding: 26px;
+  flex: 1;
+}
+
+.page-head {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.page-head p {
+  color: var(--muted);
+  margin-top: 4px;
+  max-width: 620px;
+}
+
+.page-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* ---------- app footer ---------- */
+
+.app-footer {
+  background: var(--canvas-2);
+  border-top: 1px solid var(--line);
+  padding: 24px 26px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.app-footer .brand {
+  padding: 0;
+}
+
+.app-footer small {
+  display: block;
+  color: var(--muted);
+  margin-top: 6px;
+  font-size: 11.5px;
+}
+
+.app-footer nav {
+  display: flex;
+  gap: 22px;
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.app-footer nav a:hover {
+  color: var(--blue-700);
+}
+
+@media (max-width: 1080px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .search {
+    display: none;
+  }
+  .page {
+    padding: 18px 14px;
+  }
+}

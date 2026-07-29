@@ -1,0 +1,249 @@
+/* ===== MEDAI SIDEBAR ===== */
+.medai-sidebar {
+  width: 220px;
+  min-width: 220px;
+  background: #fff;
+  border-right: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+}
+
+.medai-sidebar__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 16px 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.medai-sidebar__logo-icon {
+  width: 36px;
+  height: 36px;
+  background: #1e293b;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.medai-sidebar__logo-icon svg {
+  color: #fff;
+}
+
+.medai-sidebar__logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.medai-sidebar__logo-text span:first-child {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1.2;
+}
+
+.medai-sidebar__logo-text span:last-child {
+  font-size: 10px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.medai-sidebar__nav {
+  flex: 1;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.medai-sidebar__nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #475569;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  text-decoration: none;
+}
+
+.medai-sidebar__nav-item:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+.medai-sidebar__nav-item--active {
+  background: #16a34a;
+  color: #fff;
+}
+
+.medai-sidebar__nav-item--active:hover {
+  background: #15803d;
+  color: #fff;
+}
+
+.medai-sidebar__bottom {
+  padding: 12px 10px;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.medai-sidebar__user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+}
+
+.medai-sidebar__avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #3b82f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.medai-sidebar__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.medai-sidebar__user-info span:first-child {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+  line-height: 1.3;
+}
+
+.medai-sidebar__user-info span:last-child {
+  display: block;
+  font-size: 11px;
+  color: #64748b;
+}
+
+/* ===== VITALITY SIDEBAR ===== */
+.vitality-sidebar {
+  width: 200px;
+  min-width: 200px;
+  background: #fff;
+  border-right: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+}
+
+.vitality-sidebar__welcome {
+  padding: 20px 16px 14px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.vitality-sidebar__welcome p {
+  font-size: 11px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 3px;
+}
+
+.vitality-sidebar__welcome strong {
+  font-size: 15px;
+  color: #1e40af;
+  font-weight: 700;
+}
+
+.vitality-sidebar__nav {
+  flex: 1;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.vitality-sidebar__nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #475569;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  text-decoration: none;
+}
+
+.vitality-sidebar__nav-item:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+.vitality-sidebar__nav-item--active {
+  background: #e0f2fe;
+  color: #1e40af;
+  font-weight: 600;
+}
+
+.vitality-sidebar__nav-item--active:hover {
+  background: #bae6fd;
+}
+
+.vitality-sidebar__bottom {
+  padding: 12px 10px;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vitality-sidebar__sos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #dc2626;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  width: 100%;
+  border: none;
+}
+
+.vitality-sidebar__sos:hover {
+  background: #b91c1c;
+}

@@ -1,0 +1,118 @@
+.lab-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 18px;
+  align-items: start;
+}
+
+.lab-main,
+.lab-side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.right {
+  text-align: right;
+}
+
+.right strong {
+  font-size: 13px;
+  color: var(--blue-900);
+}
+
+.plain-summary {
+  margin-top: 16px;
+  border-left: 3px solid var(--blue-600);
+  background: var(--blue-50);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  padding: 14px 16px;
+}
+
+.plain-summary p {
+  margin-top: 8px;
+  font-size: 12.5px;
+  color: var(--ink-2);
+}
+
+.check-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.check {
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--grad-soft);
+}
+
+.check-value {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--blue-900);
+  letter-spacing: -0.03em;
+}
+
+.check-value span {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.check-ico {
+  color: var(--muted-2);
+}
+
+.trend {
+  padding: 6px 0 0;
+}
+
+.trend-svg {
+  width: 100%;
+  height: 170px;
+}
+
+.trend-axis {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--muted);
+  margin: 4px 0 14px;
+}
+
+.advice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.advice {
+  display: flex;
+  gap: 10px;
+}
+
+.advice strong {
+  font-size: 12.5px;
+}
+
+.center {
+  text-align: center;
+}
+
+@media (max-width: 1080px) {
+  .lab-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .check-grid {
+    grid-template-columns: 1fr;
+  }
+}

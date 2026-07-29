@@ -1,0 +1,157 @@
+.archive-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  height: 30px;
+  padding: 0 16px;
+  border-radius: var(--r-pill);
+  background: var(--canvas-2);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.chip--active {
+  background: var(--blue-800);
+  color: #fff;
+}
+
+.archive-tools {
+  display: flex;
+  gap: 10px;
+}
+
+.archive-tools .search {
+  width: 190px;
+  margin-left: 0;
+}
+
+.archive-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.archive-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.archive-thumb {
+  height: 110px;
+  border-radius: var(--r-md);
+  background: radial-gradient(circle at 50% 45%, #64748b, #0b0f16 72%);
+  margin-bottom: 4px;
+}
+
+.archive-icon {
+  margin-bottom: 4px;
+}
+
+.archive-title {
+  font-size: 17px;
+}
+
+.blue {
+  color: var(--blue-700);
+}
+
+.archive-stats {
+  display: flex;
+  gap: 10px;
+}
+
+.archive-stats div {
+  flex: 1;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  padding: 8px;
+}
+
+.archive-stats strong {
+  display: block;
+  font-size: 13px;
+  color: var(--blue-900);
+}
+
+.archive-insight {
+  font-size: 11.5px;
+  color: var(--muted);
+  border-left: 3px solid var(--green-500);
+  background: var(--green-50);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  padding: 10px 12px;
+}
+
+.archive-insight strong {
+  color: #0d7a3c;
+}
+
+.archive-actions {
+  margin-top: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.archive-actions .btn {
+  flex: 1;
+}
+
+.archive-sync {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  border-style: dashed;
+  background: var(--grad-soft);
+}
+
+.archive-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+
+.archive-summary strong {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--blue-800);
+  margin-right: 8px;
+}
+
+.archive-summary span {
+  font-size: 11.5px;
+  color: var(--muted);
+}
+
+@media (max-width: 1080px) {
+  .archive-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .archive-grid,
+  .archive-summary {
+    grid-template-columns: 1fr;
+  }
+}
