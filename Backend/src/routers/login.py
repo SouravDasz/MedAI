@@ -1,4 +1,4 @@
-from fastapi import APiRouter,Depends,HTTPException
+from fastapi import APIRouter,Depends,HTTPException
 from sqlalchemy.orm import Session
 
 
@@ -7,7 +7,7 @@ from src.core.database import get_db
 from src.services.auth_service import get_user_by_email
 from src.core.security import verify_password,create_access_token
 
-router=APiRouter("/user")
+router=APIRouter(prefix="/user")
 
 
 @router.post("/login")
@@ -38,7 +38,7 @@ def login(data:Login_request,db:Session=Depends(get_db)):
 
     token=create_access_token(
         {
-            "sub":exist_user.id
+            "sub":str(exist_user.id)
         }
     )
 
