@@ -83,7 +83,7 @@
 
 .auth-card {
   width: 100%;
-  max-width: 430px;
+  max-width: 730px;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--r-xl);
@@ -380,3 +380,102 @@
     padding: 24px 18px;
   }
 }
+/* /* =========================================
+   EMAIL VERIFY BUTTON
+========================================= */
+
+.email-verify-btn {
+  height: 44px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.email-verify-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.email-verify-btn:active {
+  transform: translateY(0);
+}
+
+.email-verify-btn:disabled {
+  background: #93c5fd;
+  cursor: not-allowed;
+  transform: none;
+}
+
+
+/* =========================================
+   OTP INPUT + VERIFY OTP
+========================================= */
+
+.otp-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.otp-container input {
+  flex: 1;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+  letter-spacing: 2px;
+  transition: border-color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.otp-container input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.otp-container button {
+  height: 44px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+}
+
+.otp-container button:hover {
+  background: #1d4ed8;
+}
+
+.otp-container button:disabled {
+  background: #93c5fd;
+  cursor: not-allowed;
+}
+
+
+/* =========================================
+   EMAIL VERIFIED
+========================================= */
+#email{
+  width: 520 px;
+}
+.email-verified {
+  color: #0cd656;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+} 

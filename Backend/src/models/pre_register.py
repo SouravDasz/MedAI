@@ -24,13 +24,13 @@ class Pre_register(Base):
         nullable=False
     )
 
-    otp=Column(
-        String
-    )
-
-    otp_expiry = Column(DateTime(timezone=True))
-
     created_at = Column(
     DateTime(timezone=True),
     default=lambda: datetime.now(UTC)
     )
+class Verified_Email(Base):
+    __tablename__="verify_email"
+    email=Column(String, primary_key=True)
+    otp=Column(String)
+    expiry_time=Column(String)
+    isVarified=Column(Boolean,default=False)

@@ -23,12 +23,12 @@ class User(Base):
         unique=True,
         index=True
     )
+    phone=Column(String,nullable=True)
     hash_password=Column(
         String,
         nullable=True)
     google_id = Column(
-        String,
-        nullable=True
+        String
     )
     provider = Column(
         String,
