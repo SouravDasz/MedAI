@@ -327,13 +327,14 @@
 
 .otp-boxes {
   display: flex;
-  gap: 10px;
+  gap: 5px;
   margin-bottom: 14px;
 }
 
 .otp-boxes input {
   flex: 1;
   height: 46px;
+  width: 26px;
   text-align: center;
   font-size: 17px;
   font-weight: 700;

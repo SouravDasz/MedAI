@@ -46,7 +46,7 @@ def register(data:Register_request,db:Session=Depends(get_db)):
     temp_user=User(
         name=data.fullname,
         email=data.email,
-        phone=data.phone,
+        username=data.username,
         hash_password=hash_pass,
         email_verified=True
     )
@@ -167,4 +167,46 @@ def verify_email(data:Verify_email,db:Session=Depends(get_db)):
     db.commit()
     return {
         "message":"Email verified Successfully",
+    }
+@router.post('/login-verify-email')
+def verify_email_log(data:Verify_email,db:Session=Depends(get_db)):
+    if not data.otp:
+        raise HTTPException(
+            status_code=400,
+            detail="Please enter Otp"
+        )
+     
+    verify_data=db.query(Verified_Email).filter(Verified_Email.email==data.email).order_by(Verified_Email.id.desc()).first()
+
+    print(verify_data)
+    print("after verify data")
+    current=time.time()
+
+
+    if not verify_data:
+        raise HTTPException(
+            status_code=400,
+            detail="Some problem in otp sending."
+        )
+
+    expiry_time = verify_data.expiry_time
+    print("this expiry time",expiry_time,current)
+
+    if current > float(expiry_time):
+        print("otp expire",current > float(expiry_time)) 
+        raise HTTPException(
+            status_code=400,
+            detail="OTP expire try again"
+        )
+
+    if data.otp != verify_data.otp:
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid OTP"
+        )
+        
+    verify_data.isVarified=True
+    db.commit()
+    return {
+        "message":" Login Successfully",
     }

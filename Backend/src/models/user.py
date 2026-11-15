@@ -23,7 +23,7 @@ class User(Base):
         unique=True,
         index=True
     )
-    phone=Column(String,nullable=True)
+    username=Column(String,nullable=True)
     hash_password=Column(
         String,
         nullable=True)

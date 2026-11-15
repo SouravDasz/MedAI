@@ -2,7 +2,7 @@ import { useState } from "react";
 import { data, Link } from "react-router-dom";
 import AuthAside from "../components/AuthAside.jsx";
 import "./Auth.css";
-
+import { useNavigate } from "react-router-dom";
 import {
   signup,
   sendOtp,
@@ -15,7 +15,7 @@ export default function SignUp() {
   // ==========================================
   // STATES
   // ==========================================
-
+  const Navigate=useNavigate();
   const [showPass, setShowPass] = useState(false);
 
   const [emailVerified, setEmailVerified] =
@@ -36,7 +36,7 @@ export default function SignUp() {
   const [formData, setFormData] = useState({
     fullname: "",
     email: "",
-    phone: "",
+    username: "",
     password: ""
   });
 
@@ -270,6 +270,7 @@ console.log("hj");
       setMessage(
         "Account created successfully!"
       );
+      Navigate("/SignIn");
 
     }
 
@@ -308,7 +309,11 @@ console.log("hj");
       <main className="auth-main">
 
         <div className="auth-card">
-
+        {message && (
+        <div style={{ marginTop: '20px', color: 'green', fontWeight: 'bold' }}>
+          {message}
+        </div>
+      )}
 
           {/* BACK TO SIGN IN */}
 
@@ -513,17 +518,18 @@ console.log("hj");
               <label className="field">
 
                 <span>
-                  Phone number
+                  Username
                 </span>
 
                 <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  placeholder="+91 5550001234"
-                  value={formData.phone}
+                  type="text"
+                  id="username"
+                  name="username"
+                  placeholder="rahul123"
+                  value={formData.username}
                   onChange={handleChange}
-                  autoComplete="tel"
+                  // autoComplete="tel"
+                  required
                 />
 
               </label>

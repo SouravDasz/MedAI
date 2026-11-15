@@ -1,15 +1,28 @@
 from pydantic import BaseModel,EmailStr,Field
-
+from typing import Literal, Union, Annotated
 
 class Register_request(BaseModel):
     fullname : str=Field(min_length=2, max_length=100)
     email : EmailStr
-    phone : str=Field(min_length=10,max_length=100)
+    username : str=Field(min_length=2,max_length=100)
     password : str=Field(min_length=6,max_length=100)
 
-class Login_request(BaseModel):
-    email:EmailStr
-    password:str
+class PasswordLogin(BaseModel):
+    mode: Literal["password"]
+    username: str =Field(min_length=2,max_length=100)
+    password: str = Field(min_length=6,max_length=100)
+
+# --- Mode 2: OTP Login ---
+class OtpLogin(BaseModel):
+    mode: Literal["otp"]
+    email: str = EmailStr
+     
+
+# --- Combined Schema using Discriminator ---
+LoginRequest = Annotated[
+    Union[PasswordLogin, OtpLogin],
+    Field(discriminator="mode")
+]
 
 class TokenResponse(BaseModel):
 

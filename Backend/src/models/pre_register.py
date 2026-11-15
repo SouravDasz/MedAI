@@ -30,7 +30,8 @@ class Pre_register(Base):
     )
 class Verified_Email(Base):
     __tablename__="verify_email"
-    email=Column(String, primary_key=True)
+    id=Column(Integer,primary_key=True)
+    email=Column(String)
     otp=Column(String)
     expiry_time=Column(String)
     isVarified=Column(Boolean,default=False)

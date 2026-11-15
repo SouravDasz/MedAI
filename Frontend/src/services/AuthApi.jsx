@@ -88,3 +88,59 @@ export const signup = async (formData) => {
 
   return data;
 };
+export const signin = async (formData) => {
+
+  const response = await fetch(
+    `${API_URL}/user/signin`,
+    {
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json"
+      },
+
+      body: JSON.stringify(formData)
+    }
+  );
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(
+      data.detail || "Signup failed"
+    );
+  }
+
+  return data;
+};
+export const verifyOtpLogin = async (
+  email,
+  otp
+) => {
+
+  const response = await fetch(
+    `${API_URL}/auth/login-verify-email`,
+    {
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json"
+      },
+
+      body: JSON.stringify({
+        email: email,
+        otp: otp
+      })
+    }
+  );
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(
+      data.detail || "Invalid OTP"
+    );
+  }
+
+  return data;
+};

@@ -6,6 +6,7 @@ import "../src/styles/varriables.css";
 import "../src/styles/global.css";
 import "../src/styles/layout.css";
 import "./index.css";
+import "./App.css";
 // cnnD:\MedAI\MedAI\Frontend\src\styles
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
