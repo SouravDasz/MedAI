@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+.venv/
+venv/
+env/
+
+# Frontend build and caches
+dist/
+.vite/
+.cache/
+coverage/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environment and secrets
+
+.env.*
+*.env
+!.env.example
+
+# Databases
+*.sqlite
+*.sqlite3
+*.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editors and operating systems
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Generated archives
+*.bak
+*.tmp

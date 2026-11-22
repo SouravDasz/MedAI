@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="72" viewBox="0 0 280 72" fill="none" role="img" aria-label="MedAI monochrome logo">
+  <rect x="4" y="4" width="64" height="64" rx="18" fill="#153F35"/>
+  <path d="M36 18V54M18 36H54" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
+  <path d="M17 46H25L30 38L37 51L43 25L49 46H55" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="55" cy="46" r="3" fill="#FFFFFF"/>
+  <text x="82" y="48" fill="#153F35" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="750" letter-spacing="-1.5">MedAI</text>
+</svg>

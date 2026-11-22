@@ -1,249 +1,303 @@
-import { Link } from "react-router-dom";
-import "./Landing.css";
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import medaiLogo from '../assets/medai-logo.svg'
+import medaiIcon from '../assets/medai-icon.svg'
+import './Landing.css'
 
 const features = [
   {
-    icon: "🩻",
-    title: "Understand Your Scans",
-    text: "Get a clear explanation of your X-ray or MRI results. We help you see what matters so you can feel better conversations with your care team.",
-    badge: "See How It Works",
+    icon: '✦',
+    title: 'AI Health Insights',
+    text: 'Explore general health information based on the reports you submit.',
   },
   {
-    icon: "🧪",
-    title: "Clear Lab Reports",
-    text: "Every number in your bloodwork, translated. No jargon, no medical dictionary required.",
+    icon: '⌁',
+    title: 'Laboratory Report Analysis',
+    text: 'Upload laboratory reports and get clear, AI-assisted explanations of their contents.',
   },
-];
-
-const tiles = [
-  { icon: "💬", title: "24/7 Friendly Chat", text: "Our sensible assistant is available any hour of the day to answer the small questions you forget to ask.", tone: "blue" },
-  { icon: "💊", title: "Know Your Meds", text: "Easily check what your medicine is for, and how to take it safely, every day.", tone: "plain" },
-  { icon: "🌿", title: "Daily Wellness", text: "Simple, kind nudges that help you build routines that actually stick.", tone: "green" },
-];
+  {
+    icon: 'Rx',
+    title: 'Medicine Information',
+    text: 'Understand medicines, common uses and possible side effects.',
+    status: 'Planned',
+  },
+  {
+    icon: '◫',
+    title: 'Wellness Tracking',
+    text: 'Keep health information and wellness goals organized in one place.',
+    status: 'Planned',
+  },
+  {
+    icon: '?',
+    title: 'AI Health Assistant',
+    text: 'Ask health-related questions and explore useful medical information.',
+    status: 'Planned',
+  },
+]
 
 const steps = [
-  { title: "Quick & Secure Setup", text: "Create your private profile. We use bank-level security so your health data really stays private." },
-  { title: "Upload or Sync", text: "Snap a photo of your results or sync with your care provider to gather your health info in one place." },
-  { title: "Smart Analysis", text: "Our AI compares metrics to your history, then finds patterns and explanations tailored to your life." },
-  { title: "Get Your Health Guide", text: "Receive easy-to-read reports and friendly tips so your healthy picks feel like your next every day." },
-];
+  ['01', 'Create Your Account', 'Register securely and verify your email.'],
+  ['02', 'Upload Your Laboratory Report', 'Submit a laboratory report for analysis.'],
+  ['03', 'AI Analyzes Your Report', 'Let MedAI organize the report into understandable insights.'],
+  ['04', 'Understand Your Results', 'Review explanations and discuss concerns with a healthcare professional.'],
+]
 
-const stats = [
-  ["100%", "Private"],
-  ["SECURE", "Data Protection"],
-  ["24/7", "Support"],
-  ["SIMPLE", "Insights"],
-];
+const faqs = [
+  ['What is MedAI?', 'MedAI is a healthcare information platform that helps users organize laboratory reports and explore AI-assisted explanations.'],
+  ['How does laboratory report analysis work?', 'A user uploads a supported report, and MedAI organizes available values into clearer sections and general insights.'],
+  ['Can I upload my laboratory reports?', 'Report upload and analysis are available through the MedAI account workspace when enabled for the account.'],
+  ['Is my personal information secure?', 'MedAI uses protected account authentication and keeps authentication cookies outside browser script storage.'],
+  ['Does MedAI replace a doctor?', 'No. MedAI provides educational health information and does not replace professional medical advice, diagnosis, or treatment.'],
+  ['How do I create an account?', 'Select Get Started, complete the registration form, and verify your email using the OTP sent to you.'],
+]
 
 export default function Landing() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('home')
+  const startDestination = '/register'
+
+  useEffect(() => {
+    const sections = ['home', 'features', 'how-it-works', 'about', 'contact']
+      .map((id) => document.getElementById(id))
+      .filter(Boolean)
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
+      if (visible) setActiveSection(visible.target.id)
+    }, { rootMargin: '-20% 0px -65% 0px', threshold: [0.1, 0.25, 0.5] })
+    sections.forEach((section) => observer.observe(section))
+    return () => observer.disconnect()
+  }, [])
+
+  const closeMobileMenu = () => setMobileMenuOpen(false)
+
   return (
-    <div className="landing">
-      <header className="landing-nav">
-        <Link to="/" className="brand">
-          <span className="brand-mark">✚</span> MedAI
+    <main className="landing-page">
+      <nav className="landing-nav" aria-label="Primary navigation">
+        <Link className="landing-brand" to="/" onClick={closeMobileMenu}>
+          <img className="landing-brand-logo" src={medaiLogo} alt="MedAI" />
         </Link>
-        <nav>
-          <a href="#features">Features</a>
-          <a href="#how">How it works</a>
-          <a href="#wellness">Wellness</a>
-          <a href="#find">Find Care</a>
-        </nav>
-        <div className="landing-nav-actions">
-          <Link to="/signin" className="landing-signin">
-            Sign in
-          </Link>
-          <Link to="/dashboard" className="btn btn--primary btn--sm">
-            Ask AI
-          </Link>
+        <button
+          type="button"
+          className="mobile-menu-button"
+          aria-expanded={mobileMenuOpen}
+          aria-controls="landing-navigation"
+          aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          onClick={() => setMobileMenuOpen((open) => !open)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+        <div id="landing-navigation" className={`landing-navigation ${mobileMenuOpen ? 'open' : ''}`}>
+          <div className="landing-links">
+            <a className={activeSection === 'home' ? 'active' : ''} href="#home" onClick={closeMobileMenu}>Home</a>
+            <a className={activeSection === 'features' ? 'active' : ''} href="#features" onClick={closeMobileMenu}>Features</a>
+            <a className={activeSection === 'how-it-works' ? 'active' : ''} href="#how-it-works" onClick={closeMobileMenu}>How It Works</a>
+            <a className={activeSection === 'about' ? 'active' : ''} href="#about" onClick={closeMobileMenu}>About Us</a>
+            <a className={activeSection === 'contact' ? 'active' : ''} href="#contact" onClick={closeMobileMenu}>Contact</a>
+          </div>
+          <div className="landing-actions">
+            <Link className="landing-login" to="/login" onClick={closeMobileMenu}>Login</Link>
+            <Link className="landing-primary-small" to={startDestination} onClick={closeMobileMenu}>Get Started</Link>
+          </div>
         </div>
-      </header>
+      </nav>
 
-      <section className="hero">
+      <section id="home" className="landing-hero">
         <div className="hero-copy">
-          <span className="badge badge--green">✚ Your AI Health Companion</span>
-          <h1>
-            Peace of Mind for
-            <br />
-            <span className="hero-accent">Your Everyday</span>
-            <br />
-            Health Journey
-          </h1>
-          <p>
-            Understand your health reports, track your wellness, and get clear answers to your
-            medical questions — all in one secure, friendly place.
+          <p className="hero-kicker"><span>✦</span> AI-powered healthcare</p>
+          <h1>Your Health,<br />Made Smarter with <em>AI.</em></h1>
+          <p className="hero-lede">
+            Understand your health reports, explore medical insights, and manage your healthcare journey with the power of artificial intelligence.
           </p>
-          <div className="hero-cta">
-            <Link to="/dashboard" className="btn btn--dark">
-              Start for Free
-            </Link>
-            <a href="#how" className="btn btn--ghost">
-              How it helps me
-            </a>
+          <div className="hero-buttons">
+            <Link className="landing-primary" to={startDestination}>Get Started <span>→</span></Link>
+            <a className="landing-secondary" href="#features">Explore Features <span>↓</span></a>
           </div>
-          <div className="hero-proof">
-            <div className="hero-faces">
-              <span>AR</span>
-              <span>SJ</span>
-              <span>JW</span>
-              <span>SC</span>
-            </div>
-            <p className="tiny muted">Loved by 12,000+ people taking charge of their health</p>
+          <div className="trust-row">
+            <span><b>✓</b> AI-assisted insights</span>
+            <span><b>✓</b> Secure account</span>
+            <span><b>✓</b> Clear reports</span>
           </div>
         </div>
 
-        <div className="hero-visual">
-          <div className="hero-phone">
-            <div className="phone-notch" />
-            <div className="phone-screen">
-              <p className="phone-label">Weekly Overview</p>
-              <p className="phone-value">94%</p>
-              <div className="phone-chart">
-                {[38, 52, 44, 66, 58, 78, 92].map((height, index) => (
-                  <span key={index} style={{ height: `${height}%` }} />
-                ))}
-              </div>
-              <div className="phone-rows">
-                <div>
-                  <strong>72 bpm</strong>
-                  <span>Heart rate</span>
+        <div className="hero-product" aria-label="MedAI report dashboard preview">
+          <div className="report-window">
+            <div className="window-bar">
+              <div className="window-brand"><span>+</span> MedAI</div>
+              <div className="window-avatar">M</div>
+            </div>
+            <div className="window-body">
+              <aside className="window-sidebar">
+                <span className="sidebar-active">⌂ <b>Overview</b></span>
+                <span>▤ <b>Reports</b></span>
+                <span>✦ <b>Insights</b></span>
+                <span>⚙ <b>Settings</b></span>
+              </aside>
+              <div className="window-main">
+                <div className="window-heading">
+                  <div><small>HEALTH OVERVIEW</small><strong>Your results</strong></div>
+                  <span>New report</span>
                 </div>
-                <div>
-                  <strong>8h 12m</strong>
-                  <span>Sleep</span>
+                <div className="metric-row">
+                  <article><span className="metric-dot green">✓</span><small>Reports</small><strong>Ready</strong></article>
+                  <article><span className="metric-dot blue">⌁</span><small>Analysis</small><strong>New</strong></article>
+                  <article><span className="metric-dot gold">↑</span><small>Account</small><strong>Secure</strong></article>
                 </div>
+                <article className="analysis-card">
+                  <div className="analysis-icon">⌁</div>
+                  <div>
+                    <small>LABORATORY REPORT</small>
+                    <strong>Blood Test Analysis</strong>
+                    <p>Key values organized into easy-to-understand sections.</p>
+                  </div>
+                  <span>View</span>
+                </article>
               </div>
             </div>
           </div>
-          <div className="hero-note">
-            <span className="icon-box icon-box--green">✓</span>
-            <div>
-              <strong>Your health markers</strong>
-              <p className="tiny muted">Your energy levels look better this week.</p>
-            </div>
+          <div className="floating-insight">
+            <span>✦</span>
+            <div><b>Report ready</b><small>AI-assisted summary</small></div>
           </div>
+          <img
+            className="hero-human"
+            src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=700&q=88"
+            alt="Healthcare professional"
+          />
         </div>
       </section>
 
-      <section className="section" id="features">
-        <div className="section-head">
-          <h2>Better Health, Explained Simply</h2>
-          <p className="muted">
-            We use advanced technology to translate complex medical data the easy-to-understand
-            insights you can actually use.
-          </p>
+      <section id="features" className="feature-section">
+        <div className="section-heading">
+          <p>CORE FEATURES</p>
+          <h2>Everything You Need for Smarter Healthcare</h2>
+          <span>Explore intelligent tools designed to make understanding and managing your health easier.</span>
         </div>
-
         <div className="feature-grid">
           {features.map((feature) => (
-            <article key={feature.title} className="card feature-card">
-              <div className="spread">
-                <span className="icon-box">{feature.icon}</span>
-                {feature.badge && <span className="badge badge--green">{feature.badge}</span>}
-              </div>
+            <article className="feature-card" key={feature.title}>
+              <div className="feature-icon">{feature.icon}</div>
+              {feature.status && <small className="feature-status">{feature.status}</small>}
               <h3>{feature.title}</h3>
-              <p className="muted">{feature.text}</p>
-            </article>
-          ))}
-        </div>
-
-        <div className="tile-grid">
-          {tiles.map((tile) => (
-            <article key={tile.title} className={`tile tile--${tile.tone}`}>
-              <span className="tile-icon">{tile.icon}</span>
-              <h3>{tile.title}</h3>
-              <p>{tile.text}</p>
+              <p>{feature.text}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="section section--split" id="how">
-        <div>
-          <h2>
-            From Confusion to Clarity in
-            <br /> Minutes
-          </h2>
-          <ol className="steps">
-            {steps.map((step, index) => (
-              <li key={step.title}>
-                <span className="step-num">{index + 1}</span>
-                <div>
-                  <h3>{step.title}</h3>
-                  <p className="muted">{step.text}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
+      <section id="how-it-works" className="steps-section">
+        <div className="section-heading">
+          <p>HOW IT WORKS</p>
+          <h2>Your Healthcare Journey, Simplified</h2>
         </div>
-        <div className="how-visual" aria-hidden="true">
-          <div className="how-kiosk" />
-          <div className="how-people">
-            <span />
-            <span />
-            <span />
+        <div className="steps-grid">
+          {steps.map(([number, title, text]) => (
+            <article className="step-card" key={number}>
+              <span>{number}</span>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="about" className="benefit-section">
+        <div className="benefit-copy">
+          <p className="section-label">WHY CHOOSE MEDAI</p>
+          <h2>Technology That Makes Healthcare Easier</h2>
+          <p>MedAI brings report information, account security and personal health organization into one accessible workspace.</p>
+        </div>
+        <div className="benefit-grid">
+          {[
+            ['01', 'Easy to understand', 'Plain-language explanations make medical information less overwhelming.'],
+            ['02', 'AI-assisted analysis', 'Turn complex report values into organized, readable insights.'],
+            ['03', 'Secure authentication', 'Use protected account access with cookie-based authentication.'],
+            ['04', 'One useful dashboard', 'Keep reports and health information together in a simple workspace.'],
+          ].map(([number, title, text]) => (
+            <article key={title}>
+              <span>{number}</span>
+              <div><h3>{title}</h3><p>{text}</p></div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="dashboard-section">
+        <div className="dashboard-copy">
+          <p className="section-label">YOUR WORKSPACE</p>
+          <h2>See everything that matters in one dashboard</h2>
+          <p>Sign in to manage your account and access MedAI’s report analysis workspace.</p>
+          <Link className="landing-primary" to={startDestination}>Open Dashboard <span>→</span></Link>
+        </div>
+        <div className="dashboard-preview">
+          <div className="preview-sidebar">
+            <div className="preview-logo">MedAI</div>
+            <span>▦ Overview</span>
+            <span>▤ Reports</span>
+            <span>✦ Insights</span>
+            <span>⚙ Settings</span>
+          </div>
+          <div className="preview-content">
+            <div className="preview-header"><small>WORKSPACE</small><b>Health Overview</b></div>
+            <div className="preview-stats">
+              <span><small>Reports</small><b>Organize</b></span>
+              <span><small>Analysis</small><b>Review</b></span>
+              <span><small>Account</small><b>Active</b></span>
+            </div>
+            <div className="preview-chart">
+              <div><span>Health report activity</span><b>Monthly overview</b></div>
+              <div className="chart-bars"><i /><i /><i /><i /><i /><i /><i /></div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="cta" id="find">
-        <h2>Take Control of Your Health Today</h2>
-        <p>
-          Join thousands of people who use MedAI to find peace of mind and live healthier, more
-          informed lives.
-        </p>
-        <div className="cta-actions">
-          <Link to="/dashboard" className="btn btn--onblue">
-            Get Started Now
+      <section id="disclaimer" className="disclaimer" aria-label="Medical disclaimer">
+        <p><strong>Medical disclaimer</strong></p>
+        <p>MedAI provides AI-assisted health information for educational purposes. It does not replace professional medical advice, diagnosis, or treatment.</p>
+      </section>
+
+      <section className="faq-section" aria-labelledby="faq-heading">
+        <div className="section-heading">
+          <p>COMMON QUESTIONS</p>
+          <h2 id="faq-heading">Frequently Asked Questions</h2>
+        </div>
+        <div className="faq-list">
+          {faqs.map(([question, answer]) => (
+            <details key={question}>
+              <summary>{question}<span aria-hidden="true">+</span></summary>
+              <p>{answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <section className="landing-cta">
+        <p>READY TO BEGIN</p>
+        <h2>Take a smarter step toward understanding your health.</h2>
+        <Link className="landing-primary" to={startDestination}>Get Started with MedAI <span>→</span></Link>
+      </section>
+
+      <footer id="contact" className="landing-footer">
+        <div>
+          <Link className="landing-brand footer-brand" to="/">
+            <img className="landing-brand-logo" src={medaiIcon} alt="MedAI" />
+            <span>MedAI</span>
           </Link>
-          <a href="#how" className="btn btn--outline-light">
-            See how it works
-          </a>
+          <p>AI-assisted medical information made clearer.</p>
         </div>
-        <div className="cta-stats">
-          {stats.map(([value, label]) => (
-            <div key={label}>
-              <strong>{value}</strong>
-              <span>{label}</span>
-            </div>
-          ))}
+        <div className="footer-links">
+          <a href="#about">About MedAI</a>
+          <a href="#features">Features</a>
+          <a href="#contact">Contact</a>
+          <a href="#privacy">Privacy Policy</a>
+          <a href="#terms">Terms and Conditions</a>
+          <a href="#disclaimer">Medical Disclaimer</a>
         </div>
-      </section>
-
-      <footer className="landing-footer">
-        <div>
-          <div className="brand">
-            <span className="brand-mark">✚</span> MedAI
-          </div>
-          <p className="tiny muted">
-            Empowering you with clear health insights and compassionate everyday guidance.
-          </p>
-        </div>
-        <div className="landing-footer-cols">
-          <div>
-            <h4>Explore</h4>
-            <a href="#features">How It Works</a>
-            <a href="#features">Lab Reports</a>
-            <a href="#features">Health Scans</a>
-            <a href="#features">Mobile App</a>
-          </div>
-          <div>
-            <h4>Support</h4>
-            <a href="#help">Help Center</a>
-            <a href="#privacy">Privacy</a>
-            <a href="#terms">Terms</a>
-            <a href="#contact">Contact</a>
-          </div>
-          <div>
-            <h4>Stay Connected</h4>
-            <div className="social">
-              <span>f</span>
-              <span>in</span>
-              <span>✕</span>
-            </div>
-          </div>
-        </div>
-        <small>© 2024 MedAI Health Companion. Your data is safe &amp; private.</small>
       </footer>
-    </div>
-  );
+    </main>
+  )
 }

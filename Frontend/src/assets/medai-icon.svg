@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" role="img" aria-label="MedAI icon">
+  <rect x="2" y="2" width="60" height="60" rx="17" fill="#28745F"/>
+  <path d="M32 15V49" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/>
+  <path d="M15 32H49" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/>
+  <path d="M14 43H21L26 35L32 47L38 23L43 43H50" stroke="#8FB7A5" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="50" cy="43" r="2.8" fill="#FFFFFF"/>
+</svg>
