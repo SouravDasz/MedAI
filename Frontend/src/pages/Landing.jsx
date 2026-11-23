@@ -54,7 +54,7 @@ const faqs = [
 export default function Landing() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
-  const startDestination = '/register'
+  const startDestination = '/dashboard'
 
   useEffect(() => {
     const sections = ['home', 'features', 'how-it-works', 'about', 'contact']
