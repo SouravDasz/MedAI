@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import ProfileMenu from '../components/auth/ProfileMenu'
 
 export default function Dashboard() {
   const { user, logout } = useAuth()
@@ -16,5 +17,5 @@ export default function Dashboard() {
 }
 
 export function AppShell({ children, user, onLogout }) {
-  return <div className="app-shell"><header className="app-header"><Link className="brand" to="/dashboard"><span className="brand-mark">+</span> MedAI</Link><nav><Link to="/dashboard">Dashboard</Link><Link to="/settings">Settings</Link><button className="text-button" onClick={onLogout}>Sign out</button></nav><span className="avatar">{user?.username?.charAt(0).toUpperCase()}</span></header><main className="app-content">{children}</main></div>
+  return <div className="app-shell"><header className="app-header"><Link className="brand" to="/dashboard"><span className="brand-mark">+</span> MedAI</Link><nav><Link to="/dashboard">Dashboard</Link><Link to="/settings">Settings</Link></nav><ProfileMenu user={user} onLogout={onLogout} /></header><main className="app-content">{children}</main></div>
 }

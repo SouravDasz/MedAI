@@ -498,8 +498,20 @@ async def google_callback(
 def get_my_profile(
     current_user: User = Depends(get_current_user),
 ):
+    provider = "Google" if any(
+        account.provider == "google"
+        for account in current_user.oauth_accounts
+    ) else "Email"
 
-    return current_user
+    return {
+        "id": current_user.id,
+        "username": current_user.username,
+        "email": current_user.email,
+        "is_verified": current_user.is_verified,
+        "created_at": current_user.created_at,
+        "has_password": bool(current_user.hashed_password),
+        "auth_provider": provider,
+    }
 
 
 
